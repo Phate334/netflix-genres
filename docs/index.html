@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="netflixCodesSearch">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix 分類查詢</title>
+    <link rel="stylesheet" href="bulmaswatch-darkly.min.css">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="genreList">
+    <div class="container">
+        <div class="section">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered has-icons-left">
+                    <input class="input is-rounded" type="text" ng-model="searchText" placeholder="搜尋">
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8 has-icons-left">
+                    <p>共 {{result.length}} 筆資料</p>
+                </div>
+            </div>
+            <div class="row columns is-centered is-multiline">
+                <div class="column is-8" ng-repeat="genre in genreData.rows | filter:searchText as result">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4 no-padding">{{genre[2]}}</p>
+                                    <p>
+                                        <span class="title is-6">
+                                            <a href="https://netflix.com/browse/genre/{{genre[0]}}"
+                                                target="_blank">{{genre[0]}}</a>
+                                        </span>
+                                    </p>
+                                    <p class="subtitle is-6">{{genre[1]}}</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                {{genre[3]}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
